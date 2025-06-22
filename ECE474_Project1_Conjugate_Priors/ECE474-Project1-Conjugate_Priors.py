@@ -5,12 +5,11 @@ from matplotlib.animation import FuncAnimation
 
 np.random.seed(1)
 
-# Common simulation settings
-true_mean = 5.0
+#Parameters
+true_mean = 5.0 #I'm choosing 5 as my center so that when I plot stuff with 0 as my lower bound, my stuff isn't smushed to the left of the plot
 true_variance = 4.0  # sigma^2 = 2^2
 n_samples = 100
 data = np.random.normal(true_mean, np.sqrt(true_variance), size=n_samples)
-
 
 # === Scenario 1: Gaussian with known variance - Estimate the Mean ===
 
@@ -24,7 +23,6 @@ def conjugate_mean_estimate(data, mu0, tau0_sq, sigma_sq):
 def ml_mean_estimate(data):
     return np.mean(data)
 
-
 # === Scenario 2: Gaussian with known mean - Estimate the Variance ===
 
 def conjugate_variance_estimate(data, known_mean, alpha0, beta0):
@@ -36,7 +34,6 @@ def conjugate_variance_estimate(data, known_mean, alpha0, beta0):
 
 def ml_variance_estimate(data, known_mean):
     return np.mean((data - known_mean) ** 2)
-
 
 # === Evaluate Mean Squared Error (MSE) over increasing data size ===
 
@@ -94,7 +91,6 @@ def evaluate_estimators():
     plt.legend()
     plt.grid(True)
     plt.show()
-
 
 # === Plot Posterior Evolution ===
 
